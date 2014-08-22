@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link rel="stylesheet" href="css/mystyl.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugins.js"></script>
+    <script type="text/javascript" language="javascript" src="quotes.json"></script> 
+    <script>
+            
+            /*document.addEventListener('deviceready', function () {
+			   		var now = new Date().getTime();
+					
+					alert(now.getTime().getMinute());
+					_60_seconds_from_now = new Date(now + 5*1000);
+					
+					window.plugin.notification.local.add({
+					    id:         1, // is converted to a string
+					    title:      'Reminder',
+					    message:    'Dont forget to buy some flowers.',
+					    repeat:     'daily',
+					    date:       _60_seconds_from_now,
+					    foreground: 'foreground',
+					    background: 'background'
+					});
+					
+					function foreground (id) {
+					    console.log('I WAS RUNNING ID='+id)
+					}
+					
+					function background (id) {
+					    console.log('I WAS IN THE BACKGROUND ID='+id)
+					}
+			}, false);*/
+			$(document).ready(function(){
+			var day=new Date();
+			var quotes=jsonObject.Quote;
+			var number=jsonObject.Order;
+			var newArr = quotes.slice(0, number);
+			$.each(newArr, function(i, item){
+
+				var item=('<li class="ui-li-static ui-body-inherit"><h3>' + quotes[i].Writer+'</h3><p>'+quotes[i].Content + '</p></li>');				
+				$('#quotelist').append(item);
+				// alert(quotes[i].Content);
+				});
+		 	$('ul').listview('refresh');
+   		});
+        </script>
+</head>
+<body>
+	<div data-role="page" id="quotePage">
+        <div data-role="header">
+            <a data-ajax="false" href="index.html" data-icon="back" data-iconpos="notext"></a>
+            <h3>Previous Quotes</h3>
+        </div>
+        <div data-role="content">
+            <ul  id="quotelist" data-role="listview" data-filter="true" data-split-theme="e" data-inset="true">
+              <li data-role="list-divider">Quotes</li>
+                
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                    <ul>
+                        <li><a data-ajax="false" href="quotePage.html" >Today's Quote</a></li>
+                        <li><a data-ajax="false" href="#" class="ui-btn-active ui-state-persist">Previous Quotes</a></li>
+                        <li><a data-ajax="false" href="#" >Setting</a></li>
+                        
+                    </ul>
+                </div>	
+        </div>
+    </div>
+    <script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+</body>

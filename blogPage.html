@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link rel="stylesheet" href="css/mystyl.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+     <script type="text/javascript">
+		//	 JSON to get blod feed from Montreal City Mission Blog
+    	function getLatestBlog(data){
+				var entries=data.feed.entry;
+				var output='<h2 class="label">Latest Blog</h2>';
+				
+				for(var i=0;i<data.feed.entry.length;i++){
+						var entriesTitle=entries[i].title.$t;
+						var entriesDate=entries[i].published.$t.substring(0,10);
+						var entriesContent=entries[i].content.$t;
+						output+='<div data-role="collapsible" data-icon="blog">';
+						output+='<h3>'+entriesTitle+'</h3>';
+						output+='<p>'+entriesDate+'</p></li>';
+						output+='<p>'+entriesContent+'</p></li></div>';
+						
+					}
+					output+='<br/><div style="text-align:center;"><a href="http://montrealcitymission.blogspot.ca"/>Read more interesting stories</a></div>';
+					
+					document.getElementById("listContainer").innerHTML=output;
+			}
+		
+    </script>
+</head>
+<body>
+	<div data-role="page" id="blogPage">
+            <div data-role="header">
+                <a data-ajax="false" href="index.html" data-icon="back" data-iconpos="notext"></a>
+                <h3>MCM Blog</h3>
+            </div>
+            <div data-role="content">
+            	<div id="listContainer" data-role="collapsible-set">
+                </div>
+                
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                        <ul>
+                            <li><a data-ajax="false" href="index.html" data-icon="home" data-iconpos="top">Home</a></li>
+                            <li><a data-ajax="false"  class="ui-btn-active ui-state-persist" href="blogPage.html" data-icon="blog" data-iconpos="top">Blog</a></li>
+                            <li><a data-ajax="false" href="quotePage.html" data-icon="quote" data-iconpos="top">Quote</a></li>
+                            <li><a data-ajax="false" href="meditationPage" data-icon="clock" data-iconpos="top" >Meditation</a></li>
+                            <li><a data-ajax="false" href="#" data-icon="gear" data-iconpos="top">Setting</a></li>
+                        </ul>    
+
+               </div>	
+            </div>
+    </div>
+    <script type="text/javascript" src="http://montrealcitymission.blogspot.ca/feeds/posts/default?alt=json-in-script&callback=getLatestBlog&max-results=20"></script>
+    <script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+</body>

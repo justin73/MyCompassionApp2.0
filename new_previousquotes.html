@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugins.js"></script>
+    <script type="text/javascript" language="javascript" src="quotes.json"></script> 
+    <script>
+			$(document).ready(function(){
+			var day=new Date();
+			var quotes=jsonObject.Quote;
+			var number=jsonObject.Order;
+			var newArr = quotes.slice(0, number);
+			$.each(newArr, function(i, item){
+
+				var item=('<li class="ui-li-static ui-body-inherit"><h3>' + quotes[i].Writer+'</h3><p>'+quotes[i].Content + '</p></li>');				
+				$('#quotelist').append(item);
+				// alert(quotes[i].Content);
+				});
+		 	$('ul').listview('refresh');
+   		});
+        </script>
+     <style>
+	 @font-face {
+        font-family: "Open Sans";
+        src:url(font/OpenSans-ExtraBold-webfont.svg) format('svg'),
+		url(font/OpenSans-ExtraBold-webfont.ttf) format('ttf')
+        url('132873536-OpenSans-ExtraBold-webfont.tff.woff') format('woff'),
+        url('132873536-OpenSans-ExtraBold-webfont.tff.ttf') format('truetype');
+        font-weight:bolder;
+    }
+	body{
+		font-family: 'Open Sans', sans-serif;
+		font-weight:1200;
+		color:white;
+		font-size:28px;
+	   line-height: 2;
+		}
+	.ui-page{
+		background: #58BC5A;
+		}
+	 	.quotes{
+			box-shadow:none;
+			border-radius:0;
+			}
+			.ui-content{
+				padding:0;}
+		.ui-content .ui-listview-inset, .ui-panel-inner>.ui-listview-inset {
+			margin: 0;
+}
+
+.ui-listview>.ui-li-static, .ui-listview>.ui-li-divider, .ui-listview>li>a.ui-btn{
+	border:none;
+	}
+	.ui-listview>.ui-li-static, .ui-listview>.ui-li-divider, .ui-listview>li>a.ui-btn{
+		text-align:center;}
+		.ui-page{
+			text-align:center;}
+     </style>
+</head>
+<body>
+	<div data-role="page" id="quotePage">
+        
+            <h3>Previous Quotes</h3>
+        	 
+        <div data-role="content">
+        <div style="text-align:center;font-size:28px;line-height:2;background:#E6B113;">
+             <a data-ajax="false" href="new_quotepage.html" style="text-decoration:none;"><i class="fa fa-undo fa-4x"></i></a>
+             </div>
+            <ul class="quotes" id="quotelist" data-role="listview"  data-split-theme="e" data-inset="true">
+             
+            </ul>
+        </div>       
+    </div>
+</body>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link rel="stylesheet" href="css/mystyl.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<link rel="stylesheet" href="css/jquery.countdown.css">
+<style type="text/css">
+#defaultCountdown { width: 240px; height: 45px; }
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/jquery.plugin.js"></script>
+<script src="js/jquery.countdown.js"></script>
+<script>
+function start() {
+	$("button").hide();
+	var austDay = new Date();
+	austDay.setMinutes(austDay.getMinutes()+0);
+	austDay.setSeconds(austDay.getSeconds()+10);
+
+	$('#defaultCountdown').countdown({until: austDay, onExpiry: alarm, expiryText:'<div class="over">It\'s all over</div>'});
+	function alarm() { 
+	$('<audio id="chatAudio"><source src="sound/notify.mp3" type="audio/mpeg"></audio>').appendTo('body');
+
+    $('#chatAudio')[0].play(); 
+	$("button").show();
+} 
+}
+</script>
+</head>
+<body>
+	<div data-role="page" id="meditationSetting">
+    	<div data-role="header">
+        	<a data-ajax="false" href="index.html" data-icon="grid" data-iconpos="notext"></a><h3>Meditation Setting</h3>
+        </div>
+        <div data-role="content">
+            <div id="defaultCountdown"></div> 
+            <button onClick="start()"> start</button>   
+        </div>
+        <div data-role="footer" data-position="fixed">
+        	<div data-role="navbar">
+            	<ul>
+            		<li><a data-ajax="false" href="index.html" data-icon="home" data-iconpos="top">Home</a></li>
+                	<li><a data-ajax="false" href="blogPage.html" data-icon="blog" data-iconpos="top">Blog</a></li>
+    				<li><a data-ajax="false" href="quotePage.html" data-icon="quote" data-iconpos="top">Quote</a></li>
+                	<li><a data-ajax="false" href="#" data-icon="clock" data-iconpos="top" class="ui-btn-active ui-state-persist">Meditation</a></li>
+                	<li><a data-ajax="false" href="#" data-icon="gear" data-iconpos="top">Setting</a></li>
+            	</ul>
+            </div>	
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+</body>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugins.js"></script>
+    <script type="text/javascript" language="javascript" src="quotes.json"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53d29f11013c84f1"></script>
+
+    <script>
+		$(document).ready(function(e) {
+			var day=new Date();
+			var order=jsonObject.Order;
+			var quotes=jsonObject.Quote;
+			var hour=jsonObject.Alarm[0].Hour;
+			var minute=jsonObject.Alarm[0].Minute;
+			//alert("notification time setting"+ hour+":"+minute);
+		 $("#results").html(""+quotes[order].Content+'<br/>'+ 'By '+quotes[order].Writer);
+   		});
+</script>
+<style>
+	@font-face {
+        font-family: "Open Sans";
+        src:url(font/OpenSans-ExtraBold-webfont.svg) format('svg'),
+		url(font/OpenSans-ExtraBold-webfont.ttf) format('ttf')
+        url('132873536-OpenSans-ExtraBold-webfont.tff.woff') format('woff'),
+        url('132873536-OpenSans-ExtraBold-webfont.tff.ttf') format('truetype');
+        font-weight:bolder;
+    }
+	body{
+		font-family: 'Open Sans', sans-serif;
+		font-weight:1200;
+		color:white;
+		font-size:28px;
+	   line-height: 2;
+		}
+	.ui-page{
+		background: #58BC5A;
+		}
+		.menu{
+			width: 100%;
+			background: #58BC5A;
+			text-align: center;
+			margin: auto 0;
+			text-shadow:none;
+			}
+		.ui-content{
+
+			padding: 0;
+			vertical-align: middle}
+			.link{
+				text-decoration:none;
+				color:white;}
+		.ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited,.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+color:white;
+}
+.ui-page-theme-a a:hover{
+	color:#38c;
+	}
+	
+}
+</style>
+	
+</head>
+<body>
+	<div data-role="page" id="quotePage" style="background:">
+        
+        <div data-role="content" >
+        	<div style="text-align:center;font-size:28px;line-height:2;background:#E6B113;">
+            	<p style="text-shadow:none;font-family: 'Open Sans', sans-serif;font-weight:bolder;color:white;margin:0;">Today's Quote</p>
+            </div>
+            <div style="text-align:center;font-size:28px;line-height:2;background:#E6B113;">
+            	<p id="results" style="text-shadow:none;font-family: 'Open Sans', sans-serif;font-weight:bolder;margin:0;color:white;"></p>
+            </div>
+             <div style="text-align:center;font-size:28px;line-height:2;background:#E6B113;">
+             <a data-ajax="false" href="new_index.html" style="text-decoration:none;"><i class="fa fa-undo fa-4x"></i></a>
+             </div>
+            
+            <a data-ajax="false" href="new_previousquotes.html" style="text-decoration:none;"><div style="padding-top: 19.6;padding-top: 19.6px;padding-bottom: 19.6px;padding-left: 28px;padding-right: 28px;font-size:28px;line-height:2;background:#A70707;text-align:center;font-size:28px;line-height:2;text-shadow:none;font-family: 'Open Sans', sans-serif;font-weight:bolder;">Previous Quotes</div></a>
+
+        </div>
+     
+    </div>
+   
+</body>

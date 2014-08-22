@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link rel="stylesheet" href="css/mystyl.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="quotes.json"></script> 
+    <script>
+		$(document).ready(function(e) {
+			var day=new Date();
+			var order=jsonObject.Order;
+			var quotes=jsonObject.Quote;
+		 $("#results").html("Today's quote is "+quotes[order].Content);
+   		});
+</script>
+
+    </script>
+</head>
+<body>
+	<div data-role="page" id="quotePage">
+        <div data-role="header">
+            <a data-ajax="false" href="index.html" data-icon="back" data-iconpos="notext"></a>
+            <h3>View Quotes</h3>
+        </div>
+        <div data-role="content">
+            <P id="results"></P>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                    <ul>
+                        <li><a data-ajax="false" href="#" class="ui-btn-active ui-state-persist">Today's Quote</a></li>
+                        <li><a data-ajax="false" href="quotePage.html">Previous Quotes</a></li>
+                        <li><a data-ajax="false" href="#" >Setting</a></li>
+                        
+                    </ul>
+                </div>	
+        </div>
+    </div>
+    <script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+</body>

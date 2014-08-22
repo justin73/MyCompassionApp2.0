@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+	<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <style>
+	@font-face {
+        font-family: "Open Sans";
+        src:url(font/OpenSans-ExtraBold-webfont.svg) format('svg'),
+		url(font/OpenSans-ExtraBold-webfont.ttf) format('ttf')
+        url('132873536-OpenSans-ExtraBold-webfont.tff.woff') format('woff'),
+        url('132873536-OpenSans-ExtraBold-webfont.tff.ttf') format('truetype');
+        font-weight:bolder;
+    }
+	@media screen
+ and (min-width:961px)
+ and (max-width:1920px){
+	
+}
+	body{
+		font-family: 'Open Sans', sans-serif
+		font-weight:1200;
+		color:white;
+		font-size:48px;
+	   line-height: 2;
+		}
+	.ui-page{
+		background: #58BC5A;
+		}
+		.menu{
+			width: 100%;
+			background: #58BC5A;
+			text-align: center;
+			margin: auto 0;
+			text-shadow:none;
+			}
+		.ui-content{
+
+			padding: 0;
+			vertical-align: middle}
+			.link{
+				text-decoration:none;
+				color:white;}
+		.ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited,.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+color:white;
+}
+.ui-page-theme-a a:hover{
+	color:#38c;
+	}
+    </style>
+</head>
+<body>
+	<div data-role="page" id="homePage" style="height:100%">
+    	
+        <div data-role="content">
+        	
+            <div class="menu" >
+            	<a class="link" data-ajax="false" id="blog" href="new_blogPage.html" >Blog</a>
+            </div>
+            <div class="menu">
+            	<a class="link" data-ajax="false" id="blog" href="new_quotePage.html" >Quote</a>
+            </div>
+            <div class="menu">
+            <a class="link" data-ajax="false" id="meditation" href="new_meditationPage.html" >Timer</a>
+            	
+            </div>
+            <div class="menu">
+            	<a class="link" data-ajax="false" id="setting" href="new_mapPage.html" >Map</a>
+            </div>
+            <div class="menu">
+            	<a class="link" data-ajax="false" id="setting" href="new_faqPage.html" >About</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</body>

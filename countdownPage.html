@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>A jQuery Countdown Timer | Tutorialzine Demo</title>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        <link rel="stylesheet" href="assets/countdown/jquery.countdown.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style>
+			#countdown{
+				   /*控制位置为绝对定位*/
+				margin:0 auto;
+				margin-top:30%;
+				}
+        </style><br>
+      
+    </head>
+    
+    <body>
+    <div data-role="page">
+        <div data-role="header">
+        	<a data-ajax="false" href="index.html" data-icon="grid" data-iconpos="notext"></a><h3>Meditation Setting</h3>
+        </div>
+        <div data-role="content">
+            <div id="countdown"></div>
+    		<button onClick="start()"> start</button>   
+            <p id="note"></p>
+        </div>
+        <div data-role="footer" data-position="fixed">
+        	<div data-role="navbar">
+            	<ul>
+            		<li><a data-ajax="false" href="index.html" data-icon="home" data-iconpos="top">Home</a></li>
+                	<li><a data-ajax="false" href="blogPage.html" data-icon="blog" data-iconpos="top">Blog</a></li>
+    				<li><a data-ajax="false" href="quotePage.html" data-icon="quote" data-iconpos="top">Quote</a></li>
+                	<li><a data-ajax="false" href="#" data-icon="clock" data-iconpos="top" class="ui-btn-active ui-state-persist">Meditation</a></li>
+                	<li><a data-ajax="false" href="#" data-icon="gear" data-iconpos="top">Setting</a></li>
+            	</ul>
+            </div>	
+        </div>
+    </div>         
+        <!-- JavaScript includes -->
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="assets/countdown/jquery.countdown.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+    </body>
+</html>
+

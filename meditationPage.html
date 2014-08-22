@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link rel="stylesheet" href="css/mystyl.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script>
+		$(document).ready( function(){
+		
+		$('button').click(function(){
+				window.localStorage.setItem('Hour', 0);
+				window.localStorage.setItem('Minute', $('#minute').val());
+				window.localStorage.setItem('Second', $('#minute').val());
+			});
+		
+		});
+    </script>
+</head>
+<body>
+	<div data-role="page" id="meditationSetting">
+    	<div data-role="header">
+        	<a data-ajax="false" href="index.html" data-icon="grid" data-iconpos="notext"></a><h3>Meditation Setting</h3>
+        </div>
+        <div data-role="content">
+        	<form id="backgroundsetting" name="backgroundsetting" action="#">                	
+					<div data-role="fieldcontain">
+                        <label for="sound" >Background Music:</label>
+                        <select name="sound" id="sound" data-role="slider">
+                            <option value="off">Off</option>
+                            <option value="on">On</option>
+                        </select>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="endsound" >Select Endding Sound:</label>
+                        <select name="endsound" id="endsound" >
+                            <option value="beep">Beep</option>
+                            <option value="gong">Gong</option>
+                            <option value="buzz">Buzz</option>
+                        </select>
+           			</div>
+                    <div data-role="fieldcontain">
+                    	<fieldset data-role="controlgroup" data-type="horizontal">
+                        	<legend>Set Time:</legend>
+                            <label for="minute">Minute</label>
+                            <select name="minute" id="minute" data-inline="true">
+                            	<option value="Minute">Minute</option>
+                            	<option value="0">0'</option>
+                                <option value="5">5'</option>
+                                <option value="10">10'</option>
+                                <option value="15">15'</option>
+                                <option value="20">20'</option>
+                                <option value="25">25'</option>
+                                <option value="30">30'</option>
+                                <option value="35">35'</option>
+                                <option value="40">40'</option>
+                                <option value="45">45'</option>
+                                <option value="50">50'</option>
+                                <option value="55">55'</option>
+                            </select>
+                            <label for="second">Second</label>
+                            <select name="second" id="second" data-inline="true">
+                            	<option value="second">Second</option>
+                            	<option value="0">0"</option>
+                                <option value="5">5"</option>
+                                <option value="10">10"</option>
+                                <option value="15">15"</option>
+                                <option value="20">20"</option>
+                                <option value="25">25"</option>
+                                <option value="30">30"</option>
+                                <option value="35">35"</option>
+                                <option value="40">40"</option>
+                                <option value="45">45"</option>
+                                <option value="50">50"</option>
+                                <option value="55">55"</option>
+                            </select>                          
+                        </fieldset>
+                    </div>
+            </form>
+          	<button><a data-ajax="false" href="countdownPage.html">next</a></button>
+        </div>
+        <div data-role="footer" data-position="fixed">
+        	<div data-role="navbar">
+            	<ul>
+            		<li><a data-ajax="false" href="index.html" data-icon="home" data-iconpos="top">Home</a></li>
+                	<li><a data-ajax="false" href="blogPage.html" data-icon="blog" data-iconpos="top">Blog</a></li>
+    				<li><a data-ajax="false" href="quotePage.html" data-icon="quote" data-iconpos="top">Quote</a></li>
+                	<li><a data-ajax="false"  data-icon="clock" data-iconpos="top" class="ui-btn-active ui-state-persist">Meditation</a></li>
+                	<li><a data-ajax="false" href="faqPage.html" data-icon="gear" data-iconpos="top">Setting</a></li>
+            	</ul>
+            </div>	
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+</body>

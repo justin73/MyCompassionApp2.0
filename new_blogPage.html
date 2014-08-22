@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+     <script type="text/javascript">
+		//	 JSON to get blod feed from Montreal City Mission Blog
+    	function getLatestBlog(data){
+				var entries=data.feed.entry;
+				var output='';
+				//var output='<h2 class="label">Latest Blog</h2>';
+				
+				for(var i=0;i<data.feed.entry.length;i++){
+						var entriesTitle=entries[i].title.$t;
+						var entriesDate=entries[i].published.$t.substring(0,10);
+						var entriesContent=entries[i].content.$t;
+						output+='<div data-role="collapsible" data-icon="blog">';
+						output+='<h3 >'+entriesTitle+'</h3>';
+						output+='<p>'+entriesDate+'</p></li>';
+						output+='<p>'+entriesContent+'</p></li></div>';
+						
+					}
+					output+='';
+					
+					$("#listContainer").html(output);
+			}
+		
+    </script>
+    <style>
+	@font-face {
+        font-family: "Open Sans";
+        src:url(font/OpenSans-ExtraBold-webfont.svg) format('svg'),
+		url(font/OpenSans-ExtraBold-webfont.ttf) format('ttf')
+        url('132873536-OpenSans-ExtraBold-webfont.tff.woff') format('woff'),
+        url('132873536-OpenSans-ExtraBold-webfont.tff.ttf') format('truetype');
+        font-weight:bolder;
+    }
+	body{
+		font-family: 'Open Sans', sans-serif
+		font-weight:800;
+		color:white;
+		text-shadow:none;
+		
+		}
+		.ui-page{
+			background: #58BC5A;
+			}
+		.ui-content{
+			padding: 0;
+			
+			text-shadow:none;}
+	.label{
+		text-align:center;
+		font-size:48px;
+		font-weight:bolder;
+		color:white;}
+	.ui-collapsible-inset .ui-collapsible-heading .ui-btn {
+text-align: center;
+}
+.ui-page-theme-a .ui-btn{
+ background-color:#BE5A41; 
+ border:none;
+ color: white; 
+ text-shadow: none; 
+}
+.ui-collapsible-inset, .ui-collapsible-set {
+ margin:0;
+}
+.ui-collapsible-heading, .ui-collapsible-heading>.ui-btn {
+-webkit-border-radius: 0;
+ border-radius:0;
+}
+.ui-collapsible-heading-toggle{
+	font-size:28px;line-height:2;
+	}
+.ui-page-theme-a .ui-btn:hover{
+	background: #BE5A41;
+	color: white; 
+ text-shadow: none; }
+	.blog_link{
+		text-align:center;background-color:#4480E3;color:white;text-decoration:none;padding-top: 19.6;padding-top: 19.6px;padding-bottom: 19.6px;padding-left: 70px;padding-right: 28px;font-size:28px;line-height:2;}
+	.blog_link a{
+		text-decoration:none;}
+	.back_link{
+		text-align:center;background-color:#EAE24A;color:white;text-decoration:none;padding-top: 19.6;padding-top: 19.6px;padding-bottom: 19.6px;padding-left: 70px;padding-right: 28px;font-size:28px;line-height:2;}
+		.back_link a{
+		text-decoration:none;}
+		.ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
+color:white;
+}
+
+.MsoNormal,.tr-caption-container,.separator, ui-collapsible-content p{
+	background: #BE5A41;
+	color: white; 
+	text-shadow: none;
+	}
+	.MsoNormal{
+		padding:0 20px;}
+		.ui-collapsible-content,.ui-body-inherit{
+			padding:0;
+			background: #BE5A41;}
+			.ui-collapsible-content table,.ui-body-inherit table{
+			margin:0;
+			background: #BE5A41;color:white;text-shadow:none;}
+			.ui-collapsible-content p ,.ui-body-inherit p{
+			text-align:center;
+			padding:10px auto;
+			margin:0;
+			background: #BE5A41;color:white;text-shadow:none;}
+    </style>
+    
+</head>
+<body>
+	<div data-role="page" id="blogPage">
+            
+            <div data-role="content">
+            	<div id="listContainer" data-role="collapsible-set">
+                </div>
+                <div class="blog_link"><a href="http://montrealcitymission.blogspot.ca">Read more interesting stories</a></div> 
+                <div class="back_link"><a  data-ajax="false" href="new_index.html">Back</a></div>              
+            </div>
+    </div>
+    <script type="text/javascript" src="http://montrealcitymission.blogspot.ca/feeds/posts/default?alt=json-in-script&callback=getLatestBlog&max-results=5"></script>
+</body>

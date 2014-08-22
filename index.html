@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+	<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link rel="stylesheet" href="css/mystyl.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script>
+    	var applaunchCount = window.localStorage.getItem('launchCount');
+
+		//Check if it already exists or not
+		if(applaunchCount){
+		   //This is a second time launch, and count = applaunchCount
+		   alert("Welcome to the MCM Compassion App");
+		}else{
+		  //Local storage is not set, hence first time launch. set the local storage item
+		  window.localStorage.setItem('launchCount',1);
+		  alert("Welcome to the MCM Compassion App");
+			
+		
+		  //Do the other stuff related to first time launch
+		}
+    </script>
+    <script>
+		 
+		$(document).ready(function(e) {
+          	var d=new Date();
+			var hour=d.getHours();
+			if(hour<5){
+				$(".ui-content").css({"background-image":"linear-gradient(to bottom, #280882 0%, #04043D 100%)","color":"white","font-size":"30px"});
+				$(".ui-content").prepend('<span id="greating">Time to rest, my dear friend</span>').css({
+   'font-family' : '"Playfair Display SC", serif',
+   'text-align' : 'center'});
+				}else if(hour>=5&&hour<12){
+				$(".ui-content").css("background-image","linear-gradient(to bottom, #FFFFFF 0%, #05ACFF 100%)");
+				$(".ui-content").prepend('<span id="greating">Good Morning, Montrealais</span>').css({
+   'font-family' : '"Playfair Display SC", serif',
+   'text-align' : 'center'});
+				}else if(hour>=12&&hour<17){
+				$(".ui-content").css("background-image","linear-gradient(to bottom, #CBE00D 0%, #FF681C 100%)");
+				$(".ui-content").prepend('<span id="greating">Good afternoon, Montrealais</span>').css({
+   'font-family' : '"Playfair Display SC", serif',
+   'text-align' : 'center'});
+				}else if(hour>=17&&hour<24){
+				$(".ui-content").css("background-image","linear-gradient(to bottom, #D43226 0%, #171EE8 100%)");
+				$(".ui-content").prepend('<span id="greating">Good evening, Montrealais</span>').css({
+			   'font-family' : '"Playfair Display SC", serif',
+			   'text-align' : 'center'});
+				}
+			$(function () {
+
+        var dest = $('div span#greating');
+        var c = 0;
+        var string = dest.text();
+        dest.text('').parent().show();
+        var q = jQuery.map(string.split(''), function (letter) {
+            return $('<span>' + letter + '</span>');
+        });
+        var i = setInterval(function () {
+            q[c].appendTo(dest).hide().fadeIn(500);
+            c += 1;
+            if (c >= q.length) clearInterval(i);
+        }, 100);
+    
+});
+			
+			$("#blog").hide().fadeIn(1500);
+			$("#quote").hide().fadeIn(2500);
+			$("#meditation").hide().fadeIn(3500);
+			$("#setting").hide().fadeIn(4500);   
+        });
+		
+    </script>
+</head>
+<body>
+	<div data-role="page" id="homePage">
+    	<div data-role="header">
+        	<h1>My Compassion App 2.0</h1><a href="#" data-icon="twitter" data-role="button" class="ui-btn-right">Follow us</a>
+        </div>
+        <div data-role="content">
+        	
+            <div class="ui-grid-a">
+            	<div class="ui-block-a">
+                	<a data-ajax="false" id="blog" href="blogPage.html" class="ui-bar ui-bar-b" data-role="button" data-transition="flip" data-icon="blog" data-iconpos="top">MCM Blog</a>
+                </div>
+                <div class="ui-block-b">
+                	<a data-ajax="false" id="quote" href="quotePage.html" class="ui-bar ui-bar-b" data-role="button" data-transition="flip" data-icon="quote" data-iconpos="top" >Daily Quote</a>
+                </div>
+                <div class="ui-block-a">
+                	<a data-ajax="false" id="meditation" href="meditationPage.html" class="ui-bar ui-bar-b" data-role="button" data-icon="clock" data-transition="flip" data-iconpos="top" >Meditation Timer</a>
+                </div>
+                <div class="ui-block-b">
+                	<a data-ajax="false" id="setting" href="mapPage.html" class="ui-bar ui-bar-b" data-role="button" data-icon="search" data-iconpos="top" data-transition="flip">Compassion Map</a>
+                </div>
+                 <div>
+                	<a data-ajax="false" id="setting" href="faqPage.html" class="ui-bar ui-bar-b" data-role="button" data-icon="gear" data-iconpos="top" data-transition="flip">General Setting</a>
+                </div>
+            </div>
+            
+        </div>
+        <div data-role="footer" data-position="fixed">
+        	<p style="text-align:center;">Powered by Montreal City Mission</p>
+        </div>
+        
+    </div>
+    <script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+</body>

@@ -1,0 +1,127 @@
+body{
+	font-family: 'Playfair Display SC', serif;}
+.ui-content{
+	height:100%}
+	.ui-grid-a{
+		height:100%}
+.ui-content a{
+	font-family: 'Playfair Display SC', serif;
+	border:0;
+	
+	}
+	.ui-header a{
+		font-family: 'Playfair Display SC', serif;
+		}
+.ui-icon-blog:after {
+      background-image:url("../images/icon_blog.png");
+      background-position: center 50%;
+    }
+	.ui-icon-quote:after {
+      background-image:url(../images/bullets-white.png);
+      background-position: center 50%;
+    }
+	.ui-icon-clock:after {
+      background-image:url(../images/clock-white.png);
+      background-position: center 50%;
+    }
+	.ui-icon-twitter:after {
+      background-image:url("../images/icon_twitter.png");
+      background-position: center 50%;
+    }
+	.ui-icon-read:after {
+      background-image:url("../images/carat-d-white.png");
+      background-position: center 50%;
+    }
+.ui-block-a, .ui-block-b{
+	text-align:center;
+	margin:0 auto;}
+.ui-bar ui-bar-b{
+	text-align:center;
+	margin:0 auto;
+	}
+.ui-content{
+	margin: 0 auto;
+	}
+
+#photoShow {
+    height:100%;
+    width:100%;
+	margin:0 auto;
+	text-align:center;
+}
+#photoShow div {
+	position: absolute;
+	margin: 0 auto;
+	z-index: 0;
+	left: -82px;
+	width: 541px;
+	top: 350px;
+	height: 475px;
+}
+#photoShow div.previous {
+    z-index: 1;
+}
+#photoShow div.current {
+    z-index: 2;
+}
+
+.ui-footer .ui-btn{
+			border:none;
+			background-color:#38c;
+			}
+
+#homePage .ui-content div div a{
+	color:white;
+	background-color:#2B7847;
+	min-width:150px;
+	max-width:240px;
+}
+
+#homePage .ui-content div div #blog{
+
+	-webkit-border-radius: 5em;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-radius: 5em;
+	-moz-border-radius-bottomright: 0;
+	border-radius: 5em;
+	border-bottom-right-radius: 0;
+	margin-bottom:0;
+	margin-right:0;
+	background: transparent;
+	float:right}
+#homePage .ui-content div div #quote{
+	-webkit-border-radius: 100px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius: 100px;
+-moz-border-radius-bottomleft: 5px;
+border-radius: 100px;
+border-bottom-left-radius: 5px;
+margin-bottom:0;
+margin-left:0;
+background: transparent;
+float:left}
+#homePage .ui-content div div #meditation{
+
+	-webkit-border-radius: 100px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius: 100px;
+-moz-border-radius-topright: 5px;
+border-radius: 100px;
+border-top-right-radius: 5px;
+margin-top:0;
+margin-right:0;
+background: transparent;
+float:right;}
+#homePage .ui-content div div #setting{
+-webkit-border-radius: 100px;
+-webkit-border-top-left-radius: 5px;
+-moz-border-radius: 100px;
+-moz-border-radius-topleft: 5px;
+border-radius: 100px;
+border-top-left-radius: 5px;
+margin-top:0;
+margin-left:0;
+background: transparent;
+float:left;}
+.label{
+	text-align:center;}

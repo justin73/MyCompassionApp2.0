@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+<title>My Compassion App 2.0 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+    <link href="http://jeromeetienne.github.com/jquery-mobile-960/css/jquery-mobile-960.min.css" />
+    <link rel="stylesheet" href="css/mystyl.css" />
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugins.js"></script>
+    <script type="text/javascript" language="javascript" src="quotes.json"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53d29f11013c84f1"></script>
+
+    <script>
+		$(document).ready(function(e) {
+			var day=new Date();
+			var order=jsonObject.Order;
+			var quotes=jsonObject.Quote;
+			var hour=jsonObject.Alarm[0].Hour;
+			var minute=jsonObject.Alarm[0].Minute;
+			alert("notification time setting"+ hour+":"+minute);
+		 $("#results").html("Today's quote:<br/>"+quotes[order].Content+'<br/>'+ 'By '+quotes[order].Writer);
+   		});
+</script>
+
+    </script>
+</head>
+<body>
+	<div data-role="page" id="quotePage">
+        <div data-role="header">
+            <a data-ajax="false" href="index.html" data-icon="back" data-iconpos="notext"></a>
+            <a data-ajax="false" href="quoteSetting.html" data-icon="gear" data-iconpos="notext"></a>
+            <h3>View Quotes</h3>
+        </div>
+        <div data-role="content">
+            <h1 id="results"></h1>
+            <button><a data-ajax="false" href="previousquotes.html">view previous quotes</a></button>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                        <ul>
+                            <li><a data-ajax="false" href="index.html" data-icon="home" data-iconpos="top">Home</a></li>
+                            <li><a data-ajax="false" href="blogPage.html" data-icon="blog" data-iconpos="top">Blog</a></li>
+                            <li><a data-ajax="false"  class="ui-btn-active ui-state-persist"  href="quotePage.html" data-icon="quote" data-iconpos="top">Quote</a></li>
+                            <li><a data-ajax="false" href="meditationPage" data-icon="clock" data-iconpos="top" >Meditation</a></li>
+                            <li><a data-ajax="false" href="#" data-icon="gear" data-iconpos="top">Setting</a></li>
+                        </ul>    
+
+               </div>	
+        </div>
+    </div>
+    <script type="text/javascript">
+        function doResize() {
+        var winhight = $.mobile.getScreenHeight();
+        var headhight = $('[data-role="header"]').first().outerHeight();
+        var foothight = $('[data-role="footer"]').first().outerHeight();
+        var $content=$('[data-role="content"]');
+        newhight = winhight - headhight - foothight; 
+        $content.css('min-height',newhight + 'px');
+        }
+        $(document).bind('pageshow',doResize);
+        $(window).bind('resize orientationchange',doResize);
+        </script>
+</body>
